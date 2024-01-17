@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cipuxd8erh5ch"]
+
+[ext_resource type="PackedScene" uid="uid://de6xyd5xtkujw" path="res://assets/tilesets/TileSet_01.glb" id="1_xjv4c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6to8"]
+size = Vector3(1, 0.297806, 1)
+
+[node name="TileSet_01" instance=ExtResource("1_xjv4c")]
+
+[node name="CollisionShape3D" parent="Grass/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147141, -0.00210583)
+shape = SubResource("BoxShape3D_q6to8")
+
+[node name="CollisionShape3D" parent="Water/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14913, 0)
+shape = SubResource("BoxShape3D_q6to8")
+
+[node name="CollisionShape3D" parent="Dirt/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.148918, 0)
+shape = SubResource("BoxShape3D_q6to8")
+
+[node name="CollisionShape3D" parent="Bridge_01/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149218, 0)
+shape = SubResource("BoxShape3D_q6to8")
