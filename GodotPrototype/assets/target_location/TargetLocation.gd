@@ -11,6 +11,6 @@ func _ready() -> void:
 	material = mesh.get_active_material(0)
 	material.set_shader_parameter("radius", starting_radius)
 
-func click(position: Vector3) -> void: 
-	global_position = position + Vector3.UP * ground_multiplier
+func click(click_position: Vector3) -> void: 
+	global_position = click_position + Vector3.UP * ground_multiplier
 	animation_player.play(Utils.ANIMATION_GROUND_TARGET_LOCATION)

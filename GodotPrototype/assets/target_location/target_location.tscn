@@ -12,7 +12,7 @@ shader_parameter/radius = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1qkdb"]
 material = SubResource("ShaderMaterial_wlm6i")
-size = Vector2(1, 1)
+size = Vector2(1.5, 1.5)
 
 [sub_resource type="Animation" id="Animation_crsit"]
 length = 0.001
@@ -55,7 +55,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_gycll"]
 resource_name = "ground_target_animation"
-length = 0.6
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,7 +63,7 @@ tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -75,7 +75,7 @@ tracks/1/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/outer_co
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.980392, 0.0196078, 0.815686, 1), Color(0, 0, 0, 0)]
@@ -87,10 +87,10 @@ tracks/2/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/inner_co
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.713726, 0.643137, 0.992157, 0.811765), Color(0, 0, 0, 0)]
+"values": [Color(0.713726, 0.643137, 0.992157, 0.219608), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6i7q8"]

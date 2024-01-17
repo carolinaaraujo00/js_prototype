@@ -1,9 +1,8 @@
 class_name Player extends CharacterBody3D
 
-const RAY_LENGHT: int = 100
-const SPEED: float = 300.0
+const RAY_LENGHT: int = 1000
+const SPEED: float = 500
 
-var mouse_position : Vector2
 var target_position : Vector3
 var direction: Vector3
 var space: PhysicsDirectSpaceState3D
@@ -13,9 +12,6 @@ var intersection_space_ray: Dictionary
 @onready var navigation_agent := $NavigationAgent3D
 @onready var camera := $"../Camera3D"
 @onready var target_location := $"../TargetLocation"
-
-func _ready() -> void: 
-	pass
 
 
 func _input(_event) -> void: 
@@ -31,17 +27,16 @@ func _mouse_position_to_world_position(mouse_position) -> void:
 	ray_query.collide_with_areas = true
 	
 	intersection_space_ray = space.intersect_ray(ray_query)
-	print(intersection_space_ray)
+	
 	if intersection_space_ray:
 		target_location.click(intersection_space_ray.position)
 		navigation_agent.target_position = intersection_space_ray.position
 
 
 func _move_to_point(delta) -> void:
-	target_position = navigation_agent.get_next_path_position()
-	direction = global_position.direction_to(target_position)
+	direction = global_position.direction_to(navigation_agent.get_next_path_position()).normalized()
+	velocity = direction * SPEED * delta
 	
-	velocity = direction * SPEED * delta 
 	move_and_slide()
 
 

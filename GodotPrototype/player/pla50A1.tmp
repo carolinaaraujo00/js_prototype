@@ -4,15 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://b1nft0wwmwidr" path="res://icon.svg" id="1_xp77n"]
 [ext_resource type="PackedScene" uid="uid://b5exyd5cj2n5" path="res://assets/target_location/target_location.tscn" id="3_eeqn8"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_w1qna"]
-height = 1.5
+[sub_resource type="QuadMesh" id="QuadMesh_o3wh5"]
+size = Vector2(0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sir4m"]
 albedo_texture = ExtResource("1_xp77n")
+billboard_mode = 2
 billboard_keep_scale = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8h8yc"]
-height = 1.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_uu1mu"]
+size = Vector3(0.505478, 1, 0.516125)
 
 [node name="Player" type="Node3D"]
 
@@ -20,16 +21,16 @@ height = 1.5
 script = ExtResource("1_pbsuk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_w1qna")
+mesh = SubResource("QuadMesh_o3wh5")
 surface_material_override/0 = SubResource("StandardMaterial3D_sir4m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000144958, 0, -0.00275993)
-shape = SubResource("CapsuleShape3D_8h8yc")
+shape = SubResource("BoxShape3D_uu1mu")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
-target_desired_distance = 0.1
-path_max_distance = 1.01
+path_desired_distance = 0.5
+target_desired_distance = 0.5
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
