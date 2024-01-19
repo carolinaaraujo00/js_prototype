@@ -4,36 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://b1nft0wwmwidr" path="res://icon.svg" id="1_xp77n"]
 [ext_resource type="PackedScene" uid="uid://b5exyd5cj2n5" path="res://assets/target_location/target_location.tscn" id="3_eeqn8"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_w1qna"]
-height = 1.5
+[sub_resource type="QuadMesh" id="QuadMesh_pgkx3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sir4m"]
 albedo_texture = ExtResource("1_xp77n")
 billboard_keep_scale = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8h8yc"]
-height = 1.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_7k2aw"]
 
 [node name="Player" type="Node3D"]
+
+[node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]
+visible = false
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_pbsuk")
 
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.43273, 3.81474)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_w1qna")
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.0568082, 0)
+mesh = SubResource("QuadMesh_pgkx3")
 surface_material_override/0 = SubResource("StandardMaterial3D_sir4m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000144958, 0, -0.00275993)
-shape = SubResource("CapsuleShape3D_8h8yc")
+shape = SubResource("BoxShape3D_7k2aw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 target_desired_distance = 0.1
 path_max_distance = 1.01
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
-
-[node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
-transform = Transform3D(1, 0, 0, 0, 0.932834, 0.360306, 0, -0.360306, 0.932834, 0, 3.30123, 7.63327)
-
-[node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]
