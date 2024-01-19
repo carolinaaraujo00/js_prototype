@@ -10,7 +10,7 @@ var ray_query: PhysicsRayQueryParameters3D
 var intersection_space_ray: Dictionary 
 
 @onready var navigation_agent := $NavigationAgent3D
-@onready var camera := $"../Camera3D"
+@onready var camera := $Camera3D
 @onready var target_location := $"../TargetLocation"
 
 
