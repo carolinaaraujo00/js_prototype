@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
 const RAY_LENGHT: int = 1000
-const SPEED: float = 500
+const SPEED: float = 300
 
 var target_position : Vector3
 var direction: Vector3
