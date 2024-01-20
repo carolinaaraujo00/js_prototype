@@ -15,9 +15,9 @@ billboard_keep_scale = true
 [node name="Player" type="Node3D"]
 
 [node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]
-visible = false
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 2
 script = ExtResource("1_pbsuk")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D" groups=["Camera"]]
