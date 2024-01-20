@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://f2oqrbl5v5mv"]
+
+[ext_resource type="Texture2D" uid="uid://cqjtow2bplj62" path="res://world/assets/Textures/T_Vegetation_02.png" id="1_8utvo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c8qf"]
+atlas = ExtResource("1_8utvo")
+region = Rect2(567, 124, 392, 829)
+
+[node name="sm_tree_02" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+billboard = 2
+texture = SubResource("AtlasTexture_2c8qf")
