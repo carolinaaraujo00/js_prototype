@@ -12,7 +12,7 @@ billboard_keep_scale = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k2aw"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Node3D" groups=["player"]]
 
 [node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]
 
@@ -20,7 +20,7 @@ billboard_keep_scale = true
 collision_layer = 2
 script = ExtResource("1_pbsuk")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" groups=["Camera"]]
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.43273, 3.81474)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]

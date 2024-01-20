@@ -1,4 +1,4 @@
-extends Node3D
+class_name TargetLocation extends Node3D
 
 @onready var animation_player := $AnimationPlayer
 @onready var mesh := $MeshInstance3D
