@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5nv4j600huh6"]
+
+[ext_resource type="Texture2D" uid="uid://dvgkprcgj2i0w" path="res://world/assets/Textures/T_Props_01.png" id="1_vmny5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfva"]
+atlas = ExtResource("1_vmny5")
+region = Rect2(725, 389, 266, 235)
+
+[node name="sm_balloon_01" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+alpha_cut = 2
+texture = SubResource("AtlasTexture_0lfva")

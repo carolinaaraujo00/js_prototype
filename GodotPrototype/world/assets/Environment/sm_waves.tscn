@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8j70gpit85fx"]
+
+[ext_resource type="Texture2D" uid="uid://dmx14vb45hfx" path="res://world/assets/Textures/T_Rocks_Waves.png" id="1_iojau"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtvvj"]
+atlas = ExtResource("1_iojau")
+region = Rect2(14, 135, 1004, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_227cr"]
+atlas = ExtResource("1_iojau")
+region = Rect2(9, 459, 1012, 119)
+
+[sub_resource type="Animation" id="Animation_ex4i8"]
+resource_name = "Waves"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front_Wave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0991045, 0), Vector3(0.5, -0.099, 0), Vector3(0.35, 0, 0), Vector3(0, -0.099, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back_Wave:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.3, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.459474), Vector3(-0.5, 0.1, -0.459), Vector3(-0.35, 0, -0.459), Vector3(0, 0, -0.459)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lr083"]
+_data = {
+"Waves": SubResource("Animation_ex4i8")
+}
+
+[node name="SM_waves" type="Node3D"]
+
+[node name="Front_Wave" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.305119, -0.0990407, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_jtvvj")
+
+[node name="Back_Wave" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.305119, 0.0610237, -0.459185)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_227cr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lr083")
+}
+autoplay = "Waves"
+speed_scale = 0.5

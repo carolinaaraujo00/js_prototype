@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgw28lf85bghq"]
+
+[ext_resource type="Texture2D" uid="uid://h1x21nr0153f" path="res://world/assets/Textures/T_Vegetation_01.png" id="1_sydf2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jchbo"]
+atlas = ExtResource("1_sydf2")
+region = Rect2(700, 735, 321, 176)
+
+[node name="sm_bush_03" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_jchbo")
