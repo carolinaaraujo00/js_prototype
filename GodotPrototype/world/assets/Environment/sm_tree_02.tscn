@@ -9,6 +9,7 @@ region = Rect2(567, 124, 392, 829)
 [node name="sm_tree_02" type="Node3D"]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-billboard = 2
+transform = Transform3D(0.4, 0, 0, 0, 0.282843, 0.282843, 0, -0.282843, 0.282843, 0, 0, 0)
+shaded = true
+alpha_cut = 2
 texture = SubResource("AtlasTexture_2c8qf")

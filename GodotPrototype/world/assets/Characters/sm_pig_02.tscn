@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ipi3g03eea4"]
+
+[ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="1_mwxe5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7x8k"]
+atlas = ExtResource("1_mwxe5")
+region = Rect2(377, 33, 277, 228)
+
+[node name="SM_Pig_02" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+alpha_cut = 2
+texture = SubResource("AtlasTexture_l7x8k")

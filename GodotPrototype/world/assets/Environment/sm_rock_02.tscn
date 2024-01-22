@@ -10,5 +10,7 @@ region = Rect2(738, 717, 226, 277)
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-billboard = 1
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+alpha_cut = 2
 texture = SubResource("AtlasTexture_ri2n7")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://ml4rwj6oo0gy"]
+
+[ext_resource type="Texture2D" uid="uid://c5sywbmvefkf6" path="res://world/assets/Textures/T_Landscape.png" id="1_1qd0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olkoh"]
+atlas = ExtResource("1_1qd0r")
+region = Rect2(45, 357, 929, 321)
+
+[sub_resource type="Animation" id="Animation_7w2cp"]
+resource_name = "clouds"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(80, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dhtuk"]
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.05626, 0, -3.71764), Vector3(83, 0, -3.718)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drkql"]
+_data = {
+"RESET": SubResource("Animation_dhtuk"),
+"clouds": SubResource("Animation_7w2cp")
+}
+
+[node name="SM_Cloud_03" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_olkoh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_drkql")
+}
+autoplay = "clouds"
+speed_scale = 0.15
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3.05626, 0, -3.71764)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_olkoh")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_drkql")
+}
+autoplay = "RESET"
+speed_scale = 0.15
