@@ -33,7 +33,7 @@ action_left_mouse={
 
 [navigation]
 
-3d/default_cell_size=0.2
+3d/default_cell_size=0.1
 3d/default_cell_height=0.01
 
 [rendering]
