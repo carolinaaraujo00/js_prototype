@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://b61imedix4yof"]
+
+[ext_resource type="Script" path="res://npc/test_npc/test_npc.gd" id="1_c3n5g"]
+[ext_resource type="Texture2D" uid="uid://b1nft0wwmwidr" path="res://icon.svg" id="1_udqv2"]
+[ext_resource type="PackedScene" uid="uid://b7ycs85uhmcsu" path="res://npc/navigation_agent/npc_navigation_agent.tscn" id="2_3inci"]
+[ext_resource type="PackedScene" uid="uid://0ecq0v5cn7m8" path="res://interaction/interaction_area.tscn" id="2_vo8v3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hihvw"]
+
+[node name="TestNpc" type="Node3D"]
+script = ExtResource("1_c3n5g")
+
+[node name="NPC_NavigationAgent" parent="." instance=ExtResource("2_3inci")]
+
+[node name="InteractionArea" parent="NPC_NavigationAgent" instance=ExtResource("2_vo8v3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_NavigationAgent/InteractionArea"]
+transform = Transform3D(2.565, 0, 0, 0, 2.565, 0, 0, 0, 2.565, -0.000265688, 0.784691, 0)
+shape = SubResource("BoxShape3D_hihvw")
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC_NavigationAgent"]
+transform = Transform3D(0.775, 0, 0, 0, 0.775, 0, 0, 0, 0.775, 0, 0, 0)
+texture = ExtResource("1_udqv2")

@@ -15,7 +15,8 @@ material = SubResource("ShaderMaterial_wlm6i")
 size = Vector2(1.5, 1.5)
 
 [sub_resource type="Animation" id="Animation_crsit"]
-length = 0.001
+length = 0.6
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -100,6 +101,7 @@ _data = {
 }
 
 [node name="TargetLocation" type="Node3D"]
+visible = false
 script = ExtResource("1_w82mq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

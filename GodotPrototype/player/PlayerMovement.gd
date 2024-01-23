@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody3D
 
+signal clicked_ground
+
 const RAY_LENGHT: int = 1000
 const SPEED: float = 300
 
@@ -11,7 +13,6 @@ var intersection_space_ray: Dictionary
 
 @onready var navigation_agent := $NavigationAgent3D
 @onready var camera := $Camera3D
-@onready var target_location := $"../TargetLocation"
 
 
 func _input(_event) -> void: 
@@ -23,15 +24,14 @@ func _mouse_position_to_world_position(mouse_position) -> void:
 	var origin = camera.project_ray_origin(mouse_position)
 	var target = origin + camera.project_ray_normal(mouse_position) * RAY_LENGHT
 	
-	ray_query = PhysicsRayQueryParameters3D.create(origin, target, Utils.GROUND_MASK)
+	ray_query = PhysicsRayQueryParameters3D.create(origin, target, Utils.MASK_WORLD)
 	ray_query.collide_with_areas = true
 	
 	intersection_space_ray = space.intersect_ray(ray_query)
 	
 	if intersection_space_ray:
-		target_location.click(intersection_space_ray.position)
+		clicked_ground.emit(intersection_space_ray.position)
 		navigation_agent.target_position = intersection_space_ray.position
-
 
 func _move_to_point(delta) -> void:
 	direction = global_position.direction_to(navigation_agent.get_next_path_position()).normalized()

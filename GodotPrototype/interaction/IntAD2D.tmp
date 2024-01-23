@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://drm8jos3si35x"]
+
+[ext_resource type="Script" path="res://interaction/InteractionManager.gd" id="1_3mk7q"]
+[ext_resource type="Texture2D" uid="uid://b36g54hjoa3dw" path="res://testing/cursor.png" id="2_1mx7x"]
+
+[sub_resource type="Animation" id="Animation_870ks"]
+resource_name = "anim_on_interact_area"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gsld"]
+_data = {
+"anim_on_interact_area": SubResource("Animation_870ks")
+}
+
+[node name="InteractionManager" type="Node"]
+script = ExtResource("1_3mk7q")
+
+[node name="SpriteNode3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2009, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="SpriteNode3D"]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 1)
+texture = ExtResource("2_1mx7x")
+
+[node name="AnimatedSprite2D" type="AnimationPlayer" parent="SpriteNode3D/Sprite3D"]
+libraries = {
+"": SubResource("AnimationLibrary_2gsld")
+}
+autoplay = "anim_on_interact_area"

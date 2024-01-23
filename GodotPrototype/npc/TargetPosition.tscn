@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dw5wmk8gp57l6"]
+
+[node name="TargetPosition" type="Marker3D" groups=["target"]]
