@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5hx4v0kwk461"]
+[gd_scene load_steps=9 format=3 uid="uid://c5hx4v0kwk461"]
 
 [ext_resource type="MeshLibrary" uid="uid://cakiai4qe0s58" path="res://assets/tilesets/ml_placeholder.tres" id="1_3117a"]
 [ext_resource type="PackedScene" uid="uid://2pqg1do2k0tk" path="res://player/player.tscn" id="1_jabko"]
 [ext_resource type="PackedScene" uid="uid://b61imedix4yof" path="res://npc/test_npc/test_npc.tscn" id="3_gn8se"]
+[ext_resource type="PackedScene" uid="uid://dw5wmk8gp57l6" path="res://npc/TargetPosition.tscn" id="4_1t3q3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_051k6"]
 
@@ -55,4 +56,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="TestNpc" parent="." instance=ExtResource("3_gn8se")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2697, 1.46131, 0.947242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2697, 1.3009, 0.947242)
+
+[node name="TargetPosition" parent="TestNpc" instance=ExtResource("4_1t3q3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8846, 0.0541315, 2.29303)

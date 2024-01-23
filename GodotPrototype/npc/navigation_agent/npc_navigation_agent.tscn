@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ycs85uhmcsu"]
+
+[ext_resource type="Script" path="res://npc/navigation_agent/NpcNavigationAgent.gd" id="1_7tyld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0esfr"]
+
+[node name="NPC_NavigationAgent" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_7tyld")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0esfr")

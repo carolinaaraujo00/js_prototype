@@ -33,7 +33,6 @@ func _mouse_position_to_world_position(mouse_position) -> void:
 		clicked_ground.emit(intersection_space_ray.position)
 		navigation_agent.target_position = intersection_space_ray.position
 
-
 func _move_to_point(delta) -> void:
 	direction = global_position.direction_to(navigation_agent.get_next_path_position()).normalized()
 	velocity = direction * SPEED * delta
