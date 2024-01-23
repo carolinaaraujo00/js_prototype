@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lx41e0ycc7rm"
-path="res://.godot/imported/MM_Background.png-65aaa07913973f94f17ea441f4c778d0.ctex"
+uid="uid://cp22nvb2a6es8"
+path="res://.godot/imported/Quit_Hover.png-068b926c66bafde423850bb74cad3ff9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/Main_Menu/MM_Background.png"
-dest_files=["res://.godot/imported/MM_Background.png-65aaa07913973f94f17ea441f4c778d0.ctex"]
+source_file="res://main_menu/Buttons/Quit_Hover.png"
+dest_files=["res://.godot/imported/Quit_Hover.png-068b926c66bafde423850bb74cad3ff9.ctex"]
 
 [params]
 

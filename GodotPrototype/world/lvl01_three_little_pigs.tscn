@@ -514,4 +514,4 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.60851, 2.05111, -1.5
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.31666, 1.95547, -1.25452)
 
 [node name="Player" parent="Characters" instance=ExtResource("21_pesju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87761, 2.02005, -2.58703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87761, 2.01387, -2.58703)

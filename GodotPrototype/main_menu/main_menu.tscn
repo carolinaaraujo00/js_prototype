@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://dx8q3lbabj7n1"]
 
-[ext_resource type="Script" path="res://world/Main_Menu/main_menu.gd" id="1_falfb"]
-[ext_resource type="Texture2D" uid="uid://lx41e0ycc7rm" path="res://world/Main_Menu/MM_Background.png" id="1_wsd7e"]
-[ext_resource type="Texture2D" uid="uid://43sm7diiqqtn" path="res://world/Main_Menu/Buttons/Play_Normal.png" id="2_x3slp"]
-[ext_resource type="Texture2D" uid="uid://h8ota6n85mvi" path="res://world/Main_Menu/Buttons/Play_Clicked.png" id="3_tmqw8"]
-[ext_resource type="Texture2D" uid="uid://bi3bpgj3u4v43" path="res://world/Main_Menu/Buttons/Play_Hover.png" id="4_38uon"]
-[ext_resource type="Texture2D" uid="uid://bi4vlgtw5fjw6" path="res://world/Main_Menu/Buttons/Quit_Normal.png" id="5_cd3re"]
-[ext_resource type="Texture2D" uid="uid://ch0cpgc6l2xuw" path="res://world/Main_Menu/Buttons/Quit_Clicked.png" id="6_gxxk5"]
-[ext_resource type="Texture2D" uid="uid://cp22nvb2a6es8" path="res://world/Main_Menu/Buttons/Quit_Hover.png" id="7_8gcsc"]
+[ext_resource type="Script" path="res://main_menu/MainMenu.gd" id="1_falfb"]
+[ext_resource type="Texture2D" uid="uid://lx41e0ycc7rm" path="res://main_menu/MM_Background.png" id="1_wsd7e"]
+[ext_resource type="Texture2D" uid="uid://43sm7diiqqtn" path="res://main_menu/Buttons/Play_Normal.png" id="2_x3slp"]
+[ext_resource type="Texture2D" uid="uid://h8ota6n85mvi" path="res://main_menu/Buttons/Play_Clicked.png" id="3_tmqw8"]
+[ext_resource type="Texture2D" uid="uid://bi3bpgj3u4v43" path="res://main_menu/Buttons/Play_Hover.png" id="4_38uon"]
+[ext_resource type="Texture2D" uid="uid://bi4vlgtw5fjw6" path="res://main_menu/Buttons/Quit_Normal.png" id="5_cd3re"]
+[ext_resource type="Texture2D" uid="uid://ch0cpgc6l2xuw" path="res://main_menu/Buttons/Quit_Clicked.png" id="6_gxxk5"]
+[ext_resource type="Texture2D" uid="uid://cp22nvb2a6es8" path="res://main_menu/Buttons/Quit_Hover.png" id="7_8gcsc"]
 
 [sub_resource type="SystemFont" id="SystemFont_3mljm"]
 font_names = PackedStringArray("Impact")
@@ -93,6 +93,3 @@ layout_mode = 2
 texture_normal = ExtResource("5_cd3re")
 texture_pressed = ExtResource("6_gxxk5")
 texture_hover = ExtResource("7_8gcsc")
-
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
