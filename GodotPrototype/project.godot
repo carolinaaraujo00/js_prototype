@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Prototype"
-run/main_scene="res://testing/test_movement.tscn"
+run/main_scene="res://world/Main_Menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,10 @@ Utils="*res://Utils.gd"
 [debug]
 
 shapes/navigation/geometry_face_color=Color(0.341176, 0.0117647, 0.564706, 1)
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
