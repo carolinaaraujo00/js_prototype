@@ -509,16 +509,16 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.23795, 2.47561, -1.88
 [node name="SM_Sign" parent="Props" instance=ExtResource("20_utcsx")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.60851, 2.05111, -1.53721)
 
-[node name="Characters" type="Node3D" parent="."]
-
-[node name="SM_Pig_01" parent="Characters" instance=ExtResource("19_vtuj7")]
+[node name="SM_Pig_01" parent="." instance=ExtResource("19_vtuj7")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.31666, 1.84282, -1.25452)
 
-[node name="TargetPosition" parent="Characters/SM_Pig_01" instance=ExtResource("23_4g6a0")]
+[node name="TargetPosition" parent="SM_Pig_01" instance=ExtResource("23_4g6a0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9395, 0, 11.1836)
 
-[node name="TargetPosition2" parent="Characters/SM_Pig_01" instance=ExtResource("23_4g6a0")]
+[node name="TargetPosition2" parent="SM_Pig_01" instance=ExtResource("23_4g6a0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6365, 0, -3.12038)
 
-[node name="Player" parent="Characters" instance=ExtResource("21_pesju")]
+[node name="Player" parent="." instance=ExtResource("21_pesju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87761, 2.01387, -2.58703)
+
+[node name="Characters" type="Node3D" parent="."]

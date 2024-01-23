@@ -16,14 +16,16 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("1_yegst")
 
 [node name="NPC_NavigationAgent" parent="." instance=ExtResource("1_3pnn8")]
+transform = Transform3D(3.05, 0, 0, 0, 3.05, 0, 0, 0, 3.05, 0, 0.621457, 0)
 
 [node name="InteractionArea" parent="NPC_NavigationAgent" instance=ExtResource("2_q8qla")]
+transform = Transform3D(0.327869, 0, 0, 0, 0.327869, 0, 0, 0, 0.327869, 0, -0.203756, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_NavigationAgent/InteractionArea"]
 transform = Transform3D(5.51, 0, 0, 0, 5.51, 0, 0, 0, 5.51, 0, 1.85049, 0)
 shape = SubResource("BoxShape3D_58t0r")
 
 [node name="Sprite3D" type="Sprite3D" parent="NPC_NavigationAgent"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+transform = Transform3D(0.327869, 0, 0, 0, 0.231838, 0.231838, 0, -0.231838, 0.231838, 0, -0.203756, 0)
 alpha_cut = 2
 texture = SubResource("AtlasTexture_l7x8k")
