@@ -26,6 +26,7 @@ shapes/navigation/geometry_face_color=Color(0.341176, 0.0117647, 0.564706, 1)
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
