@@ -8,4 +8,5 @@ func _ready() -> void:
 
 
 func _on_interact() -> void:
-	print("interacted!")
+	await get_tree().create_timer(3).timeout
+	interaction_area._on_interaction_finished()

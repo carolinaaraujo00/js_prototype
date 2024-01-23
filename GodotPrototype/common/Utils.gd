@@ -1,6 +1,9 @@
 extends Node
 
 const ACTION_LEFT_MOUSE = "action_left_mouse"
+const ACTION_INTERACT = "interact"
+
+const SIGNAL_INTERACTABLE_INTERACTION_FINISHED = "interaction_finished"
 
 const MASK_WORLD: int = 1
 const MASK_PLAYER: int = 2
