@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Prototype"
-run/main_scene="res://testing/test_movement.tscn"
+run/main_scene="res://main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,11 @@ InteractionManager="*res://interaction/InteractionManager.tscn"
 
 shapes/navigation/geometry_face_color=Color(0.341176, 0.0117647, 0.564706, 1)
 shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.419608)
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -46,7 +51,7 @@ interact={
 
 [navigation]
 
-3d/default_cell_size=0.2
+3d/default_cell_size=0.1
 3d/default_cell_height=0.01
 
 [rendering]

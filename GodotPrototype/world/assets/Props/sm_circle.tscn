@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dokddaclu5to4"]
+
+[ext_resource type="Texture2D" uid="uid://dvgkprcgj2i0w" path="res://world/assets/Textures/T_Props_01.png" id="1_lruda"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfva"]
+atlas = ExtResource("1_lruda")
+region = Rect2(431, 94, 162, 162)
+
+[node name="sm_circle" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("AtlasTexture_0lfva")

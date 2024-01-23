@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjnxu85tu6beq"]
+
+[ext_resource type="Texture2D" uid="uid://c5sywbmvefkf6" path="res://world/assets/Textures/T_Landscape.png" id="1_e40rd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olkoh"]
+atlas = ExtResource("1_e40rd")
+region = Rect2(0, 701, 1024, 323)
+
+[node name="SM_Cloud_01" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_olkoh")

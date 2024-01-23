@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmu1cyknm55gv"]
+
+[ext_resource type="Texture2D" uid="uid://dmx14vb45hfx" path="res://world/assets/Textures/T_Rocks_Waves.png" id="1_k28a8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri2n7"]
+atlas = ExtResource("1_k28a8")
+region = Rect2(113, 760, 45, 36)
+
+[node name="sm_peble_02" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_ri2n7")

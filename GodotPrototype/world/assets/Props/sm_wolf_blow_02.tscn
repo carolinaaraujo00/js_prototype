@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dykejb0i3y5n"]
+
+[ext_resource type="Texture2D" uid="uid://drh743qkwwkdi" path="res://world/assets/Textures/T_Props_02.png" id="1_t2mjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfva"]
+atlas = ExtResource("1_t2mjr")
+region = Rect2(206, 364, 678, 286)
+
+[node name="sm_wolf_blow_01" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("AtlasTexture_0lfva")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgov74c55bs2o"]
+
+[ext_resource type="Texture2D" uid="uid://dvgkprcgj2i0w" path="res://world/assets/Textures/T_Props_01.png" id="1_yudnk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfva"]
+atlas = ExtResource("1_yudnk")
+region = Rect2(782, 91, 151, 132)
+
+[node name="sm_triangle" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("AtlasTexture_0lfva")

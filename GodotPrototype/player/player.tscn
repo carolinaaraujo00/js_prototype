@@ -1,14 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://2pqg1do2k0tk"]
+[gd_scene load_steps=6 format=3 uid="uid://2pqg1do2k0tk"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_pbsuk"]
-[ext_resource type="Texture2D" uid="uid://b1nft0wwmwidr" path="res://icon.svg" id="1_xp77n"]
 [ext_resource type="PackedScene" uid="uid://b5exyd5cj2n5" path="res://assets/target_location/target_location.tscn" id="3_eeqn8"]
+[ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="3_mexfd"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_pgkx3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sir4m"]
-albedo_texture = ExtResource("1_xp77n")
-billboard_keep_scale = true
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl76l"]
+atlas = ExtResource("3_mexfd")
+region = Rect2(735, 374, 187, 211)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k2aw"]
 
@@ -20,13 +18,15 @@ billboard_keep_scale = true
 collision_layer = 2
 script = ExtResource("1_pbsuk")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.43273, 3.81474)
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8, 10)
+fov = 32.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.0568082, 0)
-mesh = SubResource("QuadMesh_pgkx3")
-surface_material_override/0 = SubResource("StandardMaterial3D_sir4m")
+[node name="MeshInstance3D" type="Sprite3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.433013, 0.25, 0, -0.25, 0.433013, 0, 0.00124434, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_jl76l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("BoxShape3D_7k2aw")
