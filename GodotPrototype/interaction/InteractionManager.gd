@@ -20,6 +20,11 @@ func register_area(area: InteractionArea) -> void:
 
 func unregister_area(area: InteractionArea) -> void: 
 	if active_areas.has(area): 
+		# Double sanity check
+		if area.is_connected(Utils.SIGNAL_INTERACTABLE_INTERACTION_FINISHED, _on_interaction_finished):
+			area.interaction_finished.disconnect(_on_interaction_finished)
+			if area == current_interaction_area: can_interact = true
+			print("DEBUG: Disconnecting {0} signal interaction_finished on unregister".format([str(area)]))
 		active_areas.erase(area)
 		print("DEBUG: Unregistering {0}".format([str(area)]))
 
