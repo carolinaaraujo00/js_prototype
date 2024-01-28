@@ -1,0 +1,3 @@
+join pig1 1 [animation="Zoom In Center" wait="true"]
+pig1: Olá!
+[end_timeline]

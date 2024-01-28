@@ -14,6 +14,9 @@ var intersection_space_ray: Dictionary
 @onready var navigation_agent := $NavigationAgent3D
 @onready var camera := $Camera3D
 
+func _ready() -> void: 
+	InteractionManager.register_player(self)
+
 
 func _input(_event) -> void: 
 	if Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE):

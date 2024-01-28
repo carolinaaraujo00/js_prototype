@@ -19,3 +19,8 @@ const SCENE_LVL0_THREE_LITTLE_PIGS = "res://world/lvl01_three_little_pigs.tscn"
 
 const GROUP_PLAYER = "player"
 const GROUP_TARGET_POSITION = "target"
+
+const DIALOGUE_EXERCISE1 = "exercise1"
+
+func _ready() -> void: 
+	randomize()
