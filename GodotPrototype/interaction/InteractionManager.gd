@@ -49,9 +49,9 @@ func mouse_position_to_world_position(mouse_position) -> void:
 	intersection_space_ray = space.intersect_ray(ray_query)
 	
 	if intersection_space_ray:
-		if intersection_space_ray.collider.get_collision_layer_value(Utils.MASK_NPC) && !is_interaction_blocked:
-			print("clicked npc")
-			if active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+		if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_NPC):
+			if !is_interaction_blocked && active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+				print("clicked npc")
 				is_interaction_blocked = true 
 				sprite_node.visible = false
 				
@@ -60,10 +60,13 @@ func mouse_position_to_world_position(mouse_position) -> void:
 				print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
 				await current_interaction_area.interact.call()
 		
-		elif intersection_space_ray.collider.get_collision_layer_value(Utils.MASK_WORLD):
+		elif intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_WORLD):
 			clicked_ground.emit(intersection_space_ray.position)
 			player.navigation_agent.target_position = intersection_space_ray.position
 			print("clicked ground")
+		
+		elif intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_EXERCISE_PROP):
+			print("clicked exercise prop")
 
 
 func register_player(player_to_register) -> void: 

@@ -7,9 +7,10 @@ const ACTION_DEBUG = "debug"
 const SIGNAL_INTERACTABLE_INTERACTION_FINISHED = "interaction_finished"
 const SIGNAL_NPC_REACHED_TARGET = "npc_target_reached"
 
-const MASK_WORLD: int = 1
-const MASK_PLAYER: int = 2
-const MASK_NPC: int = 3
+const LAYER_WORLD: int = 1
+const LAYER_PLAYER: int = 2
+const LAYER_NPC: int = 3
+const LAYER_EXERCISE_PROP: int = 4
 
 const ANIMATION_GROUND_TARGET_LOCATION = "ground_target_animation"
 

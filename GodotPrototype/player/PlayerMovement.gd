@@ -42,7 +42,7 @@ func _physics_process(delta):
 	#var origin = camera.project_ray_origin(mouse_position)
 	#var target = origin + camera.project_ray_normal(mouse_position) * RAY_LENGHT
 	#
-	#ray_query = PhysicsRayQueryParameters3D.create(origin, target, Utils.MASK_WORLD)
+	#ray_query = PhysicsRayQueryParameters3D.create(origin, target, Utils.LAYER_WORLD)
 	#ray_query.collide_with_areas = true
 	#
 	#intersection_space_ray = space.intersect_ray(ray_query)
