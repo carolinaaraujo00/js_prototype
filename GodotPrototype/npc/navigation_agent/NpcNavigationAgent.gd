@@ -14,6 +14,7 @@ func set_target_position(new_position: Vector3) -> void:
 	reached_target = false 
 	target_position = new_position
 	navigation_agent.target_position = target_position
+	print("DEBUG: {0} set new target position: {1}".format([self, target_position]))
 
 
 func _move_to_point(delta) -> void:

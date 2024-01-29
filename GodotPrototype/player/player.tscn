@@ -29,6 +29,7 @@ texture = SubResource("AtlasTexture_jl76l")
 shape = SubResource("BoxShape3D_7k2aw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+path_desired_distance = 0.7
 target_desired_distance = 0.1
 path_max_distance = 1.01
 debug_enabled = true

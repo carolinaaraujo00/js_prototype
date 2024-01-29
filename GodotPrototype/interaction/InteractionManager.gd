@@ -23,20 +23,18 @@ var intersection_space_ray: Dictionary
 
 
 func _input(event) -> void:
-	if get_tree().get_current_scene().scene_file_path != Utils.SCENE_MAIN_MENU && \
-		Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE):
+	if get_tree().get_current_scene().scene_file_path != Utils.SCENE_MAIN_MENU:
+		if Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE):
 			mouse_position_to_world_position(get_viewport().get_mouse_position())
-		#if event.is_action_pressed(Utils.ACTION_INTERACT) && can_interact:
-			#if active_areas.size() > 0 && active_areas[0].can_area_interact(): 
-				#can_interact = false 
-				#sprite_node.visible = false
-				#
-				#current_interaction_area = active_areas[0]
-				#assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
-				#print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
-				#await current_interaction_area.interact.call()
-		
-
+		if Input.is_action_pressed(Utils.ACTION_INTERACT):
+			if !is_interaction_blocked && active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+				is_interaction_blocked = true 
+				sprite_node.visible = false
+				
+				current_interaction_area = active_areas[0]
+				assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
+				print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
+				await current_interaction_area.interact.call()
 
 
 func mouse_position_to_world_position(mouse_position) -> void:
@@ -49,23 +47,25 @@ func mouse_position_to_world_position(mouse_position) -> void:
 	intersection_space_ray = space.intersect_ray(ray_query)
 	
 	if intersection_space_ray:
-		if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_NPC):
-			if !is_interaction_blocked && active_areas.size() > 0 && active_areas[0].can_area_interact(): 
-				print("clicked npc")
-				is_interaction_blocked = true 
-				sprite_node.visible = false
-				
-				current_interaction_area = active_areas[0]
-				assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
-				print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
-				await current_interaction_area.interact.call()
+		#if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_NPC):
+			#if !is_interaction_blocked && active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+				#is_interaction_blocked = true 
+				#sprite_node.visible = false
+				#
+				#current_interaction_area = active_areas[0]
+				#assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
+				#print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
+				#await current_interaction_area.interact.call()
+			#else:
+				#print("clicked npc")
 		
-		elif intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_WORLD):
+		if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_WORLD):
 			clicked_ground.emit(intersection_space_ray.position)
 			player.navigation_agent.target_position = intersection_space_ray.position
 			print("clicked ground")
 		
 		elif intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_EXERCISE_PROP):
+			await intersection_space_ray.collider.interact.call()
 			print("clicked exercise prop")
 
 

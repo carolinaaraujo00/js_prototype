@@ -9,8 +9,10 @@ signal npc_target_reached
 var array_target_positions: Array[Vector3] = []
 var target_position: Vector3 
 
+
 func set_area_can_interact(can_interact: bool) -> void: 
 	interaction_area._set_can_interact(can_interact)
+
 
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
@@ -23,7 +25,7 @@ func _ready() -> void:
 func set_next_target() -> void: 
 	if array_target_positions.size() > 0:
 		target_position = array_target_positions.pop_front()
-
+		
 		navigation_agent.set_target_position(target_position)
 		assert(navigation_agent.npc_target_reached.connect(_on_navigation_finished) == OK)
 		print("DEBUG: NPC {0} target position set at {1}, signal on_navigation_finished connected".format([self, target_position]))
@@ -32,11 +34,11 @@ func set_next_target() -> void:
 
 
 func _on_interact() -> void:
-	pass
+	set_next_target()
 
 
 func _on_navigation_finished() -> void: 
 	navigation_agent.npc_target_reached.disconnect(_on_navigation_finished)
 	emit_signal(Utils.SIGNAL_NPC_REACHED_TARGET)
-	print("DEBUG: NPC {0} target reached {1}, finishing interaction~, emiting signal npc_target_reached".format([self, target_position]))
+	print("DEBUG: NPC {0} target reached {1}, finishing interaction, emiting signal npc_target_reached".format([self, target_position]))
 	interaction_area._on_interaction_finished()

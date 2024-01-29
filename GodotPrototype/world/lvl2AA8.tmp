@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dmawxey5074oh"]
+[gd_scene load_steps=32 format=3 uid="uid://dmawxey5074oh"]
 
 [ext_resource type="NavigationMesh" uid="uid://coorl1wc45y6b" path="res://testing/navigation_mesh.tres" id="1_fa3sh"]
 [ext_resource type="MeshLibrary" uid="uid://bqjrspn63isdy" path="res://world/assets/tileset/ML_Three_Little_Pigs.tres" id="1_pw2ol"]
@@ -22,7 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://dkqpy7tjyvqhs" path="res://world/assets/Environment/sm_cloud_02.tscn" id="23_2jdnb"]
 [ext_resource type="PackedScene" uid="uid://dw5wmk8gp57l6" path="res://npc/TargetPosition.tscn" id="23_4g6a0"]
 [ext_resource type="PackedScene" uid="uid://cdbh4hx10f1t8" path="res://world/assets/Environment/sm_mountain.tscn" id="25_7sws6"]
+[ext_resource type="PackedScene" uid="uid://b5ipi3g03eea4" path="res://world/assets/Characters/sm_pig_02.tscn" id="25_10xbu"]
 [ext_resource type="Script" path="res://npc/test_npc/NPC_Interact.gd" id="26_1a0ew"]
+[ext_resource type="PackedScene" uid="uid://d23gk0gn2uwok" path="res://world/assets/Characters/sm_pig_03.tscn" id="26_lfalu"]
 [ext_resource type="PackedScene" uid="uid://cxg3uxxbuffym" path="res://world/assets/Characters/sm_wolf.tscn" id="27_gpdnr"]
 [ext_resource type="Script" path="res://world/Exercise1.gd" id="29_yqvai"]
 
@@ -62,10 +64,25 @@ adjustment_brightness = 0.01
 [node name="Exercise1" type="Node3D" parent="."]
 script = ExtResource("29_yqvai")
 
-[node name="Characters" type="Node3D" parent="Exercise1"]
+[node name="TargetPosition" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.572454, 2.08516, 0)
 
-[node name="Player" parent="Exercise1/Characters" instance=ExtResource("21_pesju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34522, 2.01387, 0.183866)
+[node name="TargetPosition2" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129255, 2.58256, 2.13374)
+
+[node name="TargetPosition3" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6881, 2.58047, -1.54858)
+
+[node name="TargetPosition4" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508288, 2.08516, -2.52804)
+
+[node name="TargetPosition5" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60533, 2.08516, 2.7656)
+
+[node name="TargetPosition6" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68445, 2.08516, 0.640081)
+
+[node name="Characters" type="Node3D" parent="Exercise1"]
 
 [node name="Pig1" parent="Exercise1/Characters" instance=ExtResource("19_vtuj7")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.67151, 1.86618, -2.23798)
@@ -75,6 +92,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9395, 0, 11.1836)
 
 [node name="TargetPosition2" parent="Exercise1/Characters/Pig1" instance=ExtResource("23_4g6a0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6365, 0, -3.12038)
+
+[node name="Pig2" parent="Exercise1/Characters" instance=ExtResource("25_10xbu")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 8.53146, 1.86099, 0)
+script = ExtResource("26_1a0ew")
+
+[node name="Pig3" parent="Exercise1/Characters" instance=ExtResource("26_lfalu")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.28049, 1.86064, 1.17713)
+script = ExtResource("26_1a0ew")
+
+[node name="Player" parent="Exercise1/Characters" instance=ExtResource("21_pesju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12407, 2.01387, 0.183866)
 
 [node name="Wolf" parent="Exercise1/Characters" instance=ExtResource("27_gpdnr")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.88579, 1.85502, -2.73761)
@@ -92,26 +120,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Exercise1/BridgeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148193, 0, 0.00294495)
 shape = SubResource("BoxShape3D_ojvek")
-
-[node name="TargetPositions" type="Node3D" parent="Exercise1"]
-
-[node name="TargetPosition" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.572454, 2.08516, 0)
-
-[node name="TargetPosition2" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129255, 2.58256, 2.13374)
-
-[node name="TargetPosition3" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6881, 2.58047, -1.54858)
-
-[node name="TargetPosition4" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508288, 2.08516, -2.52804)
-
-[node name="TargetPosition5" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60533, 2.08516, 2.7656)
-
-[node name="TargetPosition6" parent="Exercise1/TargetPositions" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68445, 2.08516, 0.640081)
 
 [node name="Lightning" type="Node3D" parent="."]
 
