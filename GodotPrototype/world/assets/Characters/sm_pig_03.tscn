@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://0ecq0v5cn7m8" path="res://interaction/interaction_area.tscn" id="2_oh34s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_baldy"]
+size = Vector3(1, 0.512207, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l7x8k"]
 atlas = ExtResource("1_j0bya")
@@ -14,16 +15,16 @@ region = Rect2(704, 32, 296, 246)
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="NPC_NavigationAgent" parent="." instance=ExtResource("1_tkv1n")]
-transform = Transform3D(3.05, 0, 0, 0, 3.05, 0, 0, 0, 3.05, 0, 0.621457, 0)
+transform = Transform3D(5.505, 0, 0, 0, 5.505, 0, 0, 0, 5.505, 0, 1.8479, 0)
 
 [node name="InteractionArea" parent="NPC_NavigationAgent" instance=ExtResource("2_oh34s")]
-transform = Transform3D(0.327869, 0, 0, 0, 0.327869, 0, 0, 0, 0.327869, 0, -0.203756, 0)
+transform = Transform3D(0.181653, 0, 0, 0, 0.181653, 0, 0, 0, 0.181653, 0, -0.335677, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_NavigationAgent/InteractionArea"]
-transform = Transform3D(5.51, 0, 0, 0, 5.51, 0, 0, 0, 5.51, 0, 1.85049, 0)
+transform = Transform3D(5.51, 0, 0, 0, 5.51, 0, 0, 0, 5.51, 0, 0.50662, 0)
 shape = SubResource("BoxShape3D_baldy")
 
 [node name="Sprite3D" type="Sprite3D" parent="NPC_NavigationAgent"]
-transform = Transform3D(0.327869, 0, 0, 0, 0.231838, 0.231838, 0, -0.231838, 0.231838, 0, -0.203756, 0)
+transform = Transform3D(0.181653, 0, 0, 0, 0.128448, 0.128448, 0, -0.128448, 0.128448, 0, -0.335677, 0)
 alpha_cut = 2
 texture = SubResource("AtlasTexture_l7x8k")

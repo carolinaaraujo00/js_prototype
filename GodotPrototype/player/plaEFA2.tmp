@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://2pqg1do2k0tk"]
+[gd_scene load_steps=6 format=3 uid="uid://2pqg1do2k0tk"]
 
 [ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_pbsuk"]
+[ext_resource type="PackedScene" uid="uid://b5exyd5cj2n5" path="res://assets/target_location/target_location.tscn" id="3_eeqn8"]
 [ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="3_mexfd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl76l"]
@@ -10,6 +11,8 @@ region = Rect2(735, 374, 187, 211)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k2aw"]
 
 [node name="Player" type="Node3D" groups=["player"]]
+
+[node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 collision_layer = 2

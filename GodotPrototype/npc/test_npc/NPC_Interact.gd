@@ -1,5 +1,7 @@
 extends Node3D
 
+signal npc_target_reached
+
 @onready var interaction_area: InteractionArea = $NPC_NavigationAgent/InteractionArea
 @onready var navigation_agent: CharacterBody3D = $NPC_NavigationAgent
 @onready var sprite: Sprite3D = $NPC_NavigationAgent/Sprite3D
@@ -35,5 +37,6 @@ func _on_interact() -> void:
 
 func _on_navigation_finished() -> void: 
 	navigation_agent.npc_target_reached.disconnect(_on_navigation_finished)
-	print("DEBUG: NPC {0} target reached {1}, finishing interaction".format([self, target_position]))
+	emit_signal(Utils.SIGNAL_NPC_REACHED_TARGET)
+	print("DEBUG: NPC {0} target reached {1}, finishing interaction~, emiting signal npc_target_reached".format([self, target_position]))
 	interaction_area._on_interaction_finished()

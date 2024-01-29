@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dmawxey5074oh"]
+[gd_scene load_steps=32 format=3 uid="uid://dmawxey5074oh"]
 
 [ext_resource type="NavigationMesh" uid="uid://coorl1wc45y6b" path="res://testing/navigation_mesh.tres" id="1_fa3sh"]
 [ext_resource type="MeshLibrary" uid="uid://bqjrspn63isdy" path="res://world/assets/tileset/ML_Three_Little_Pigs.tres" id="1_pw2ol"]
@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://dkbttcqy7uh6f" path="res://world/assets/Environment/sm_rock_01.tscn" id="13_mau0y"]
 [ext_resource type="PackedScene" uid="uid://dq3etugftmxxm" path="res://world/assets/Environment/sm_rock_02.tscn" id="14_3d3ws"]
 [ext_resource type="PackedScene" uid="uid://cd83tvcdukfll" path="res://world/assets/Environment/sm_grass_01.tscn" id="15_w6iwe"]
-[ext_resource type="PackedScene" uid="uid://6oiarpkmg231" path="res://world/assets/Props/sm_exclamation_mark.tscn" id="17_ui572"]
-[ext_resource type="PackedScene" uid="uid://b5nv4j600huh6" path="res://world/assets/Props/sm_balloon_01.tscn" id="18_ryrwa"]
 [ext_resource type="PackedScene" uid="uid://cf1pllsujsrsb" path="res://world/assets/Characters/sm_pig_01.tscn" id="19_vtuj7"]
 [ext_resource type="PackedScene" uid="uid://odnmmw68asvr" path="res://world/assets/Environment/sm_sign.tscn" id="20_utcsx"]
 [ext_resource type="PackedScene" uid="uid://2pqg1do2k0tk" path="res://player/player.tscn" id="21_pesju"]
@@ -66,6 +64,9 @@ adjustment_brightness = 0.01
 [node name="Exercise1" type="Node3D" parent="."]
 script = ExtResource("29_yqvai")
 
+[node name="TargetPosition" parent="Exercise1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08516, 0)
+
 [node name="Characters" type="Node3D" parent="Exercise1"]
 
 [node name="Pig1" parent="Exercise1/Characters" instance=ExtResource("19_vtuj7")]
@@ -86,7 +87,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.28049, 1.86064, 1.177
 script = ExtResource("26_1a0ew")
 
 [node name="Player" parent="Exercise1/Characters" instance=ExtResource("21_pesju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87761, 2.01387, -2.58703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70355, 2.01387, 0.183866)
 
 [node name="Wolf" parent="Exercise1/Characters" instance=ExtResource("27_gpdnr")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.88579, 1.85502, -2.73761)
@@ -95,14 +96,6 @@ script = ExtResource("26_1a0ew")
 
 [node name="TargetPosition" parent="Exercise1/Characters/Wolf" instance=ExtResource("23_4g6a0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34547, 0, 7.05945)
-
-[node name="sm_exclamation_mark" parent="Exercise1" instance=ExtResource("17_ui572")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.55677, 2.13862, 0.062947)
-visible = false
-
-[node name="sm_balloon_01" parent="Exercise1" instance=ExtResource("18_ryrwa")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.23795, 2.47561, -1.8864)
-visible = false
 
 [node name="BridgeArea" type="Area3D" parent="Exercise1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45254, 2.09056, 0)
@@ -149,9 +142,6 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Waves" type="Node3D" parent="Environment"]
-
-[node name="SM_waves" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
-transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.46957, 0.873965, 1.36076)
 
 [node name="SM_waves2" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.43215, 0.873965, 3.88879)
@@ -209,9 +199,6 @@ transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.3939
 
 [node name="SM_waves18" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 23.2022, 0.873965, 9.48567)
-
-[node name="SM_waves4" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
-transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.46957, 0.873965, -2.62123)
 
 [node name="SM_waves5" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 2.34292, 0.873965, -5.34706)

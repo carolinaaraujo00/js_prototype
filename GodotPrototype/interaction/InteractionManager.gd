@@ -1,26 +1,80 @@
-extends Node
+extends Node3D
+
+signal clicked_ground
 
 @onready var sprite_node := $SpriteNode
 @onready var sprite := $SpriteNode/Sprite3D
 @onready var label := $SpriteNode/Label
+@onready var target_location_pointer := $TargetLocation
 
-var player # := get_tree().get_first_node_in_group(Utils.GROUP_PLAYER)
+const RAY_LENGHT: int = 1000
+
+var player: Node3D
+var camera: Camera3D
 var active_areas: Array = []
-var can_interact: bool = true
+var is_interaction_blocked: bool = false
 var interaction_sprite_y_offset: Vector3 = Vector3(0, 1.25, 0)
 var interaction_label_y_offset: Vector3 = Vector3(0, .8, 0)
-
 var current_interaction_area: InteractionArea
+
+var space: PhysicsDirectSpaceState3D
+var ray_query: PhysicsRayQueryParameters3D
+var intersection_space_ray: Dictionary 
+
+
+func _input(event) -> void:
+	if get_tree().get_current_scene().scene_file_path != Utils.SCENE_MAIN_MENU && \
+		Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE):
+			mouse_position_to_world_position(get_viewport().get_mouse_position())
+		#if event.is_action_pressed(Utils.ACTION_INTERACT) && can_interact:
+			#if active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+				#can_interact = false 
+				#sprite_node.visible = false
+				#
+				#current_interaction_area = active_areas[0]
+				#assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
+				#print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
+				#await current_interaction_area.interact.call()
+		
+
+
+
+func mouse_position_to_world_position(mouse_position) -> void:
+	var origin = player.camera.project_ray_origin(mouse_position)
+	var target = origin + player.camera.project_ray_normal(mouse_position) * RAY_LENGHT
+	
+	ray_query = PhysicsRayQueryParameters3D.create(origin, target)
+	ray_query.collide_with_areas = true
+	
+	intersection_space_ray = space.intersect_ray(ray_query)
+	
+	if intersection_space_ray:
+		if intersection_space_ray.collider.get_collision_layer_value(Utils.MASK_NPC) && !is_interaction_blocked:
+			print("clicked npc")
+			if active_areas.size() > 0 && active_areas[0].can_area_interact(): 
+				is_interaction_blocked = true 
+				sprite_node.visible = false
+				
+				current_interaction_area = active_areas[0]
+				assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
+				print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
+				await current_interaction_area.interact.call()
+		
+		elif intersection_space_ray.collider.get_collision_layer_value(Utils.MASK_WORLD):
+			clicked_ground.emit(intersection_space_ray.position)
+			player.navigation_agent.target_position = intersection_space_ray.position
+			print("clicked ground")
 
 
 func register_player(player_to_register) -> void: 
 	player = player_to_register
+	print(player)
 	print("DEBUG: Registered player {0}".format([str(player)]))
 
 
 func register_area(area: InteractionArea) -> void:
-	print("DEBUG: Registering {0}".format([str(area)]))
 	active_areas.push_back(area)
+	print("DEBUG: Registered {0}".format([str(area)]))
 
 
 func unregister_area(area: InteractionArea) -> void: 
@@ -28,14 +82,14 @@ func unregister_area(area: InteractionArea) -> void:
 		# Double sanity check
 		if area.is_connected(Utils.SIGNAL_INTERACTABLE_INTERACTION_FINISHED, _on_interaction_finished):
 			area.interaction_finished.disconnect(_on_interaction_finished)
-			if area == current_interaction_area: can_interact = true
-			print("DEBUG: Disconnecting {0} signal interaction_finished on unregister".format([str(area)]))
+			if area == current_interaction_area: is_interaction_blocked = false
+			print("DEBUG: Disconnected {0} signal interaction_finished on unregister".format([str(area)]))
 		active_areas.erase(area)
-		print("DEBUG: Unregistering {0}".format([str(area)]))
+		print("DEBUG: Unregistered {0}".format([str(area)]))
 
 
 func _process(_delta) -> void:
-	if active_areas.size() > 0 && can_interact: 
+	if active_areas.size() > 0 && !is_interaction_blocked: 
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		
 		if active_areas[0].can_area_interact():
@@ -51,19 +105,11 @@ func _sort_by_distance_to_player(area1: InteractionArea, area2: InteractionArea)
 	 		player.global_position.distance_to(area2.global_position)
 
 
-func _input(event) -> void:
-	if event.is_action_pressed(Utils.ACTION_INTERACT) && can_interact:
-		if active_areas.size() > 0 && active_areas[0].can_area_interact(): 
-			can_interact = false 
-			sprite_node.visible = false
-			
-			current_interaction_area = active_areas[0]
-			assert(current_interaction_area.interaction_finished.connect(_on_interaction_finished) == OK)
-			print("DEBUG: Interacting with {0}, connected to signal, calling interact".format([str(current_interaction_area)]))
-			await current_interaction_area.interact.call()
-
-
 func _on_interaction_finished() -> void:
-	print("DEBUG: Interaction with {0} finished, disconnecting signal".format([str(current_interaction_area)]))
-	can_interact = true
+	is_interaction_blocked = false
 	current_interaction_area.interaction_finished.disconnect(_on_interaction_finished)
+	print("DEBUG: Interaction with {0} finished, disconnected signal".format([str(current_interaction_area)]))
+
+
+func _physics_process(_delta):
+	space = get_world_3d().direct_space_state
