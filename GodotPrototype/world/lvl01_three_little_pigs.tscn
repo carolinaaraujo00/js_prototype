@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dmawxey5074oh"]
+[gd_scene load_steps=34 format=3 uid="uid://dmawxey5074oh"]
 
 [ext_resource type="NavigationMesh" uid="uid://coorl1wc45y6b" path="res://testing/navigation_mesh.tres" id="1_fa3sh"]
 [ext_resource type="MeshLibrary" uid="uid://bqjrspn63isdy" path="res://world/assets/tileset/ML_Three_Little_Pigs.tres" id="1_pw2ol"]
@@ -6,17 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://cp7axlj6bchf" path="res://world/assets/Environment/sm_tree_01.tscn" id="3_tkmgy"]
 [ext_resource type="PackedScene" uid="uid://f2oqrbl5v5mv" path="res://world/assets/Environment/sm_tree_02.tscn" id="4_kkh4b"]
 [ext_resource type="PackedScene" uid="uid://dngv3vay4sco4" path="res://world/assets/Environment/sm_bush_01.tscn" id="5_3qr1h"]
+[ext_resource type="PackedScene" uid="uid://c75swa0vxay1b" path="res://world/assets/Characters/sm_pig_02.tscn" id="5_no4sg"]
 [ext_resource type="PackedScene" uid="uid://ckhnr3aubv221" path="res://world/assets/Environment/sm_bush_02.tscn" id="6_b1qmp"]
+[ext_resource type="PackedScene" uid="uid://cox82kupr8waf" path="res://world/assets/Characters/sm_pig_03.tscn" id="6_xkcap"]
+[ext_resource type="Script" path="res://world/HuffManager.gd" id="7_b2kru"]
 [ext_resource type="PackedScene" uid="uid://dgw28lf85bghq" path="res://world/assets/Environment/sm_bush_03.tscn" id="7_ts5cg"]
 [ext_resource type="PackedScene" uid="uid://bfxcbk6oqj7hq" path="res://world/assets/Environment/sm_flower_01.tscn" id="8_aiqr5"]
 [ext_resource type="PackedScene" uid="uid://bosc8wonwke5s" path="res://world/assets/Environment/sm_flower_02.tscn" id="8_ml1p1"]
+[ext_resource type="PackedScene" uid="uid://djbgu7eu1vwl6" path="res://world/huff/wolf_huff_puff.tscn" id="8_ogogu"]
 [ext_resource type="PackedScene" uid="uid://c1s0g1iun17bh" path="res://world/assets/Environment/sm_flower_03.tscn" id="9_sptrt"]
 [ext_resource type="PackedScene" uid="uid://6buxsubvmkbf" path="res://world/assets/Environment/sm_flower_04.tscn" id="10_jttww"]
 [ext_resource type="PackedScene" uid="uid://dkbttcqy7uh6f" path="res://world/assets/Environment/sm_rock_01.tscn" id="13_mau0y"]
 [ext_resource type="PackedScene" uid="uid://dq3etugftmxxm" path="res://world/assets/Environment/sm_rock_02.tscn" id="14_3d3ws"]
 [ext_resource type="PackedScene" uid="uid://cd83tvcdukfll" path="res://world/assets/Environment/sm_grass_01.tscn" id="15_w6iwe"]
-[ext_resource type="PackedScene" uid="uid://6oiarpkmg231" path="res://world/assets/Props/sm_exclamation_mark.tscn" id="17_ui572"]
-[ext_resource type="PackedScene" uid="uid://b5nv4j600huh6" path="res://world/assets/Props/sm_balloon_01.tscn" id="18_ryrwa"]
 [ext_resource type="PackedScene" uid="uid://cf1pllsujsrsb" path="res://world/assets/Characters/sm_pig_01.tscn" id="19_vtuj7"]
 [ext_resource type="PackedScene" uid="uid://odnmmw68asvr" path="res://world/assets/Environment/sm_sign.tscn" id="20_utcsx"]
 [ext_resource type="PackedScene" uid="uid://2pqg1do2k0tk" path="res://player/player.tscn" id="21_pesju"]
@@ -24,6 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://dkqpy7tjyvqhs" path="res://world/assets/Environment/sm_cloud_02.tscn" id="23_2jdnb"]
 [ext_resource type="PackedScene" uid="uid://dw5wmk8gp57l6" path="res://npc/TargetPosition.tscn" id="23_4g6a0"]
 [ext_resource type="PackedScene" uid="uid://cdbh4hx10f1t8" path="res://world/assets/Environment/sm_mountain.tscn" id="25_7sws6"]
+[ext_resource type="Script" path="res://npc/test_npc/NPC_Interact.gd" id="26_1a0ew"]
+[ext_resource type="PackedScene" uid="uid://cxg3uxxbuffym" path="res://world/assets/Characters/sm_wolf.tscn" id="27_gpdnr"]
+[ext_resource type="Script" path="res://world/Exercise1.gd" id="29_yqvai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojvek"]
+size = Vector3(1.29639, 1, 2.66104)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d3nvl"]
 sky_top_color = Color(0.352941, 0.490196, 0.796078, 1)
@@ -54,6 +62,73 @@ volumetric_fog_albedo = Color(0.596078, 0.764706, 0.784314, 1)
 adjustment_brightness = 0.01
 
 [node name="Lvl01ThreeLittlePigs" type="Node3D"]
+
+[node name="Exercise1" type="Node3D" parent="."]
+script = ExtResource("29_yqvai")
+
+[node name="Characters" type="Node3D" parent="Exercise1"]
+
+[node name="Player" parent="Exercise1/Characters" instance=ExtResource("21_pesju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58361, 2.01387, 0.183866)
+
+[node name="Pig1" parent="Exercise1/Characters" instance=ExtResource("19_vtuj7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.67151, 1.86618, -2.23798)
+
+[node name="TargetPosition" parent="Exercise1/Characters/Pig1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9395, 0, 11.1836)
+
+[node name="TargetPosition2" parent="Exercise1/Characters/Pig1" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6365, 0, -3.12038)
+
+[node name="SM_Pig_02" parent="Exercise1/Characters" instance=ExtResource("5_no4sg")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 8.61272, 1.87758, -1.03129)
+
+[node name="SM_Pig_03" parent="Exercise1/Characters" instance=ExtResource("6_xkcap")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 7.47474, 2, 0.551312)
+
+[node name="Wolf" parent="Exercise1/Characters" instance=ExtResource("27_gpdnr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.88579, 1.85502, -2.73761)
+visible = false
+script = ExtResource("26_1a0ew")
+
+[node name="TargetPosition" parent="Exercise1/Characters/Wolf" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34547, 0, 7.05945)
+
+[node name="BridgeArea" type="Area3D" parent="Exercise1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00287, 2.09056, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exercise1/BridgeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.239357, 0, 0.00294495)
+shape = SubResource("BoxShape3D_ojvek")
+
+[node name="HuffManager" type="Node3D" parent="Exercise1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 0)
+script = ExtResource("7_b2kru")
+
+[node name="TargetPositions" type="Node3D" parent="Exercise1/HuffManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3, 0)
+
+[node name="TargetPosition1" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40243, 2.31621, 0.24858)
+
+[node name="TargetPosition2" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0510172, 2.06184, -2.45312)
+
+[node name="TargetPosition3" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.285774, 1.75633, 1.62064)
+
+[node name="TargetPosition4" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63725, 1.88149, 3.35455)
+
+[node name="TargetPosition5" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88133, 2.93292, -2.61848)
+
+[node name="TargetPosition6" parent="Exercise1/HuffManager/TargetPositions" instance=ExtResource("23_4g6a0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18233, 3.52019, -3.75263)
+
+[node name="wolf_huff_puff" parent="Exercise1/HuffManager" instance=ExtResource("8_ogogu")]
 
 [node name="Lightning" type="Node3D" parent="."]
 
@@ -92,11 +167,8 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Waves" type="Node3D" parent="Environment"]
 
-[node name="SM_waves" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
-transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.46957, 0.873965, 1.36076)
-
 [node name="SM_waves2" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
-transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.43215, 0.873965, 3.88879)
+transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.51215, 0.92531, 4.73822)
 
 [node name="SM_waves3" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 2.40367, 0.873965, 7.06705)
@@ -152,9 +224,6 @@ transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.3939
 [node name="SM_waves18" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 23.2022, 0.873965, 9.48567)
 
-[node name="SM_waves4" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
-transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 1.46957, 0.873965, -2.62123)
-
 [node name="SM_waves5" parent="Environment/Waves" instance=ExtResource("2_ou1dm")]
 transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.393923, 2.34292, 0.873965, -5.34706)
 
@@ -185,10 +254,10 @@ transform = Transform3D(0.4, 0, 0, 0, 0.393923, 0.0694593, 0, -0.0694593, 0.3939
 [node name="Vegetation" type="Node3D" parent="Environment"]
 
 [node name="SM_Tree_01" parent="Environment/Vegetation" instance=ExtResource("3_tkmgy")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.00014, 2.57298, -3.31968)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -2.77351, 2.57298, -3.08804)
 
 [node name="SM_Tree_02" parent="Environment/Vegetation" instance=ExtResource("3_tkmgy")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -5.40516, 2.57298, -3.26634)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -5.40516, 2.57298, -2.84122)
 
 [node name="SM_Tree_03" parent="Environment/Vegetation" instance=ExtResource("3_tkmgy")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.01303, 2.57298, -3.78106)
@@ -239,7 +308,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.97287, 1.69834, 2.61
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -4.65824, 1.69834, 4.81471)
 
 [node name="sm_bush_06" parent="Environment/Vegetation" instance=ExtResource("5_3qr1h")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.98261, 1.69834, 1.34782)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.93937, 1.69834, 2.03906)
 
 [node name="sm_bush_07" parent="Environment/Vegetation" instance=ExtResource("5_3qr1h")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 16.6189, 1.69834, 0.824107)
@@ -289,17 +358,11 @@ transform = Transform3D(0.199954, 0, -0.00427922, 0, 0.2, 0, 0.00427922, 0, 0.19
 [node name="sm_flower_31" parent="Environment/Vegetation" instance=ExtResource("8_aiqr5")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.1132, 1.61146, -2.83215)
 
-[node name="sm_flower_08" parent="Environment/Vegetation" instance=ExtResource("8_ml1p1")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.10471, 1.6505, -1.20086)
-
-[node name="sm_flower_16" parent="Environment/Vegetation" instance=ExtResource("8_ml1p1")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.36821, 1.65864, -1.2115)
-
 [node name="sm_flower_30" parent="Environment/Vegetation" instance=ExtResource("8_ml1p1")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.5903, 1.61899, -2.83484)
 
 [node name="sm_flower_36" parent="Environment/Vegetation" instance=ExtResource("9_sptrt")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.55396, 1.68838, 1.23169)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.55396, 1.68838, 2.70245)
 
 [node name="sm_flower_38" parent="Environment/Vegetation" instance=ExtResource("9_sptrt")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 15.1459, 1.63685, -4.04793)
@@ -323,7 +386,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.18158, 1.6734, 4.4345
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.53215, 1.66926, 4.49491)
 
 [node name="sm_rock_01" parent="Environment/Vegetation" instance=ExtResource("13_mau0y")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.83524, 0.938692, 4.61294)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.17608, 0.938692, 5.90357)
 
 [node name="sm_rock_07" parent="Environment/Vegetation" instance=ExtResource("13_mau0y")]
 transform = Transform3D(0.399148, 0.0260986, 0, -0.0260986, 0.399148, 0, 0, 0, 0.4, 10.6055, 1.01346, 4.53836)
@@ -335,7 +398,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.21718, 2.50267, -25.6521)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5938, 1.26264, -13.6048)
 
 [node name="sm_rock_02" parent="Environment/Vegetation" instance=ExtResource("14_3d3ws")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0563743, 1.03737, 3.10715)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -1.22967, 1.03737, 3.90372)
 
 [node name="sm_rock_08" parent="Environment/Vegetation" instance=ExtResource("14_3d3ws")]
 transform = Transform3D(0.399128, 0.0263911, 0, -0.0263911, 0.399128, 0, 0, 0, 0.4, -9.5962, 1.10298, 4.63401)
@@ -355,14 +418,11 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.62632, 1.57981, 4.803
 [node name="sm_flower_50" parent="Environment/Vegetation" instance=ExtResource("8_aiqr5")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.2463, 1.67636, 3.12175)
 
-[node name="sm_grass_38" parent="Environment/Vegetation" instance=ExtResource("15_w6iwe")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 8.24844, 1.60716, -0.970701)
-
 [node name="sm_flower_33" parent="Environment/Vegetation" instance=ExtResource("8_ml1p1")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.90536, 1.72237, 1.17986)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 13.3031, 1.72237, 2.51656)
 
 [node name="sm_grass_60" parent="Environment/Vegetation" instance=ExtResource("15_w6iwe")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.66778, 1.60381, 1.51358)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 9.66778, 1.60381, 2.94705)
 
 [node name="sm_flower_34" parent="Environment/Vegetation" instance=ExtResource("8_ml1p1")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.1844, 1.57111, -0.0385952)
@@ -500,25 +560,5 @@ transform = Transform3D(4.93305, 0, -0.815511, 0, 5, 0, 0.815511, 0, 4.93305, 29
 
 [node name="Props" type="Node3D" parent="."]
 
-[node name="sm_exclamation_mark" parent="Props" instance=ExtResource("17_ui572")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.55677, 2.13862, 0.062947)
-
-[node name="sm_balloon_01" parent="Props" instance=ExtResource("18_ryrwa")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.23795, 2.47561, -1.8864)
-
 [node name="SM_Sign" parent="Props" instance=ExtResource("20_utcsx")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.60851, 2.05111, -1.53721)
-
-[node name="SM_Pig_01" parent="." instance=ExtResource("19_vtuj7")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.31666, 1.84282, -1.25452)
-
-[node name="TargetPosition" parent="SM_Pig_01" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9395, 0, 11.1836)
-
-[node name="TargetPosition2" parent="SM_Pig_01" instance=ExtResource("23_4g6a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6365, 0, -3.12038)
-
-[node name="Player" parent="." instance=ExtResource("21_pesju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87761, 2.01387, -2.58703)
-
-[node name="Characters" type="Node3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1.8987, 2.05111, -1.35721)

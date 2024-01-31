@@ -1,0 +1,47 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 0.756863, 0.305882, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "pig1",
+"description": "",
+"display_name": "Porquinho Palha",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"pig1": {
+"export_overrides": {
+"image": "\"res://dialogues/characters/portraits/pig1.png\""
+},
+"mirror": false,
+"offset": Vector2(-90, -60),
+"scale": 0.15,
+"scene": ""
+},
+"pig2": {
+"export_overrides": {
+"image": "\"res://dialogues/characters/portraits/pig2.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"pig3": {
+"export_overrides": {
+"image": "\"res://dialogues/characters/portraits/pig3.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
+"scale": 1.0
+}

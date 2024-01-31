@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://2pqg1do2k0tk"]
+
+[ext_resource type="Script" path="res://player/PlayerMovement.gd" id="1_pbsuk"]
+[ext_resource type="PackedScene" uid="uid://b5exyd5cj2n5" path="res://assets/target_location/target_location.tscn" id="3_eeqn8"]
+[ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="3_mexfd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl76l"]
+atlas = ExtResource("3_mexfd")
+region = Rect2(735, 374, 187, 211)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7k2aw"]
+
+[node name="Player" type="Node3D" groups=["player"]]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+collision_layer = 2
+script = ExtResource("1_pbsuk")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10.735, 10.409)
+fov = 32.0
+
+[node name="MeshInstance3D" type="Sprite3D" parent="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.433013, 0.25, 0, -0.25, 0.433013, 0, 0.00124434, 0)
+shaded = true
+alpha_cut = 2
+texture = SubResource("AtlasTexture_jl76l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_7k2aw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+target_desired_distance = 0.1
+path_max_distance = 1.01
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="TargetLocation" parent="." instance=ExtResource("3_eeqn8")]

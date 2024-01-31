@@ -2,8 +2,19 @@ class_name InteractionArea extends Area3D
 
 signal interaction_finished
 
+var can_interact: bool = false
+
 var interact: Callable = func(): 
 	pass
+
+
+func _set_can_interact(new_bool: bool) -> void: 
+	can_interact = new_bool 
+
+
+func can_area_interact() -> bool: 
+	return can_interact
+
 
 func _ready() -> void:
 	assert(body_entered.connect(_on_body_entered) == OK)

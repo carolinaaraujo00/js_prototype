@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://djbgu7eu1vwl6"]
+
+[ext_resource type="Script" path="res://world/huff/WolfHuffPuff.gd" id="1_yxtlr"]
+[ext_resource type="Texture2D" uid="uid://drh743qkwwkdi" path="res://world/assets/Textures/T_Props_02.png" id="2_eexh1"]
+[ext_resource type="Texture2D" uid="uid://dvgkprcgj2i0w" path="res://world/assets/Textures/T_Props_01.png" id="3_qmdvl"]
+[ext_resource type="PackedScene" uid="uid://0ecq0v5cn7m8" path="res://interaction/interaction_area.tscn" id="4_6npaw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfva"]
+atlas = ExtResource("2_eexh1")
+region = Rect2(157, 12, 671, 295)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs0jt"]
+atlas = ExtResource("2_eexh1")
+region = Rect2(206, 364, 678, 286)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ko5m2"]
+atlas = ExtResource("2_eexh1")
+region = Rect2(183, 713, 697, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euntf"]
+atlas = ExtResource("3_qmdvl")
+region = Rect2(431, 94, 162, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8uhi"]
+atlas = ExtResource("3_qmdvl")
+region = Rect2(94, 91, 148, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ym20"]
+atlas = ExtResource("3_qmdvl")
+region = Rect2(782, 91, 151, 132)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wxpx"]
+atlas = ExtResource("3_qmdvl")
+region = Rect2(112, 429, 112, 164)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f62jm"]
+size = Vector3(1.68457, 0.724793, 0.839355)
+
+[node name="wolf_huff_puff" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_yxtlr")
+
+[node name="Cloud1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.337869, 0, 0)
+visible = false
+texture = SubResource("AtlasTexture_0lfva")
+
+[node name="Cloud2" type="Sprite3D" parent="."]
+transform = Transform3D(1.04, 0, 0, 0, 0.735391, 0.735391, 0, -0.735391, 0.735391, 0.0214519, 0, 0)
+visible = false
+texture = SubResource("AtlasTexture_bs0jt")
+
+[node name="Cloud3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.155527, 0, 0)
+visible = false
+texture = SubResource("AtlasTexture_ko5m2")
+
+[node name="Circle" type="Sprite3D" parent="."]
+transform = Transform3D(1.14, 0, 0, 0, 0.806102, 0.806102, 0, -0.806102, 0.806102, 1.11981, 0.193935, 0.317365)
+visible = false
+texture = SubResource("AtlasTexture_euntf")
+
+[node name="Square" type="Sprite3D" parent="."]
+transform = Transform3D(1.14, 0, 0, 0, 0.806102, 0.806102, 0, -0.806102, 0.806102, 1.11981, 0.193935, 0.317365)
+visible = false
+texture = SubResource("AtlasTexture_n8uhi")
+
+[node name="Triangle" type="Sprite3D" parent="."]
+transform = Transform3D(1.14, 0, 0, 0, 0.806102, 0.806102, 0, -0.806102, 0.806102, 1.11981, 0.193935, 0.317365)
+visible = false
+texture = SubResource("AtlasTexture_0ym20")
+
+[node name="Diamond" type="Sprite3D" parent="."]
+transform = Transform3D(1.14, 0, 0, 0, 0.806102, 0.806102, 0, -0.806102, 0.806102, 1.11981, 0.193935, 0.317365)
+visible = false
+texture = SubResource("AtlasTexture_6wxpx")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_6npaw")]
+transform = Transform3D(0.181653, 0, 0, 0, 0.181653, 0, 0, 0, 0.181653, 0, -0.334798, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(13.75, 0, 0, 0, 13.75, 0, 0, 0, 13.75, 4.70642, 1.97016, -1.10443)
+shape = SubResource("BoxShape3D_f62jm")

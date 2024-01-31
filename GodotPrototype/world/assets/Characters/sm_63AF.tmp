@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf1pllsujsrsb"]
+
+[ext_resource type="PackedScene" uid="uid://b7ycs85uhmcsu" path="res://npc/navigation_agent/npc_navigation_agent.tscn" id="1_3pnn8"]
+[ext_resource type="Script" path="res://npc/test_npc/NPC_Interact.gd" id="1_ml70d"]
+[ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="1_uwehc"]
+[ext_resource type="PackedScene" uid="uid://0ecq0v5cn7m8" path="res://interaction/interaction_area.tscn" id="2_q8qla"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58t0r"]
+size = Vector3(1, 0.511719, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7x8k"]
+atlas = ExtResource("1_uwehc")
+region = Rect2(18, 15, 302, 255)
+
+[node name="SM_Pig_01" type="Node3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_ml70d")
+
+[node name="NPC_NavigationAgent" parent="." instance=ExtResource("1_3pnn8")]
+transform = Transform3D(5.505, 0, 0, 0, 5.505, 0, 0, 0, 5.505, 0, 1.84306, 0)
+
+[node name="InteractionArea" parent="NPC_NavigationAgent" instance=ExtResource("2_q8qla")]
+transform = Transform3D(0.181653, 0, 0, 0, 0.181653, 0, 0, 0, 0.181653, 0, -0.334798, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_NavigationAgent/InteractionArea"]
+transform = Transform3D(5.51, 0, 0, 0, 5.51, 0, 0, 0, 5.51, 0, 0.505275, 0)
+shape = SubResource("BoxShape3D_58t0r")
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC_NavigationAgent"]
+transform = Transform3D(0.181653, 0, 0, 0, 0.128448, 0.128448, 0, -0.128448, 0.128448, 0, -0.334798, 0)
+alpha_cut = 2
+texture = SubResource("AtlasTexture_l7x8k")
