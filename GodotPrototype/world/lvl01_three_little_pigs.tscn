@@ -69,7 +69,7 @@ script = ExtResource("29_yqvai")
 [node name="Characters" type="Node3D" parent="Exercise1"]
 
 [node name="Player" parent="Exercise1/Characters" instance=ExtResource("21_pesju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.58361, 2.01387, 0.183866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72997, 2.01387, -2.35393)
 
 [node name="Pig1" parent="Exercise1/Characters" instance=ExtResource("19_vtuj7")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 6.67151, 1.86618, -2.23798)

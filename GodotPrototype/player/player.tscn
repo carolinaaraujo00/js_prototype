@@ -32,5 +32,4 @@ shape = SubResource("BoxShape3D_7k2aw")
 path_desired_distance = 0.7
 target_desired_distance = 0.1
 path_max_distance = 1.01
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
