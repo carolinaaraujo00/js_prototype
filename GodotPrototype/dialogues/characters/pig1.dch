@@ -20,7 +20,7 @@
 "image": "\"res://dialogues/characters/portraits/pig1.png\""
 },
 "mirror": false,
-"offset": Vector2(-90, -150),
+"offset": Vector2(-90, -60),
 "scale": 0.15,
 "scene": ""
 },
@@ -39,7 +39,7 @@
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 1,
+"scale": 1.0,
 "scene": ""
 }
 },

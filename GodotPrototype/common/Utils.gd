@@ -24,6 +24,7 @@ const GROUP_PLAYER = "player"
 const GROUP_TARGET_POSITION = "target"
 
 const DIALOGUE_EXERCISE1 = "exercise1"
+const DIALOGUE_EXERCISE1_CORRECT_ANSWER = "correct_answer"
 
 const DICT_COLORS: Dictionary = {
 	ENUM_COLORS.AZUL: Color(Color.DEEP_SKY_BLUE),

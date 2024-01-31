@@ -34,6 +34,7 @@ directories/dch_directory={
 "pig3": "res://dialogues/characters/pig3.dch"
 }
 directories/dtl_directory={
+"correct_answer": "res://dialogues/correct_answer.dtl",
 "exercise1": "res://dialogues/exercise1.dtl"
 }
 text/letter_speed=0.01
@@ -51,7 +52,13 @@ choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
-text/input_action="interact"
+text/input_action="action_left_mouse"
+text/autopauses={}
+variables={
+"correct_answer": ""
+}
+layout/style_list=["res://dialogues/style/style.tres"]
+layout/default_style="res://dialogues/style/style.tres"
 
 [display]
 

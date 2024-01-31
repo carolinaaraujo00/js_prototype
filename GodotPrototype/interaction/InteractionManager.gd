@@ -26,6 +26,7 @@ func _input(event) -> void:
 	if get_tree().get_current_scene().scene_file_path != Utils.SCENE_MAIN_MENU:
 		if Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE):
 			mouse_position_to_world_position(get_viewport().get_mouse_position())
+		
 		if Input.is_action_pressed(Utils.ACTION_INTERACT):
 			if !is_interaction_blocked && active_areas.size() > 0 && active_areas[0].can_area_interact(): 
 				is_interaction_blocked = true 
@@ -59,7 +60,7 @@ func mouse_position_to_world_position(mouse_position) -> void:
 			#else:
 				#print("clicked npc")
 		
-		if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_WORLD):
+		if intersection_space_ray.collider.get_collision_layer_value(Utils.LAYER_WORLD) && player.can_move:
 			clicked_ground.emit(intersection_space_ray.position)
 			player.navigation_agent.target_position = intersection_space_ray.position
 			print("clicked ground")

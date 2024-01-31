@@ -18,6 +18,7 @@ var current_round: int = 0
 
 func _ready() -> void: 
 	assert(bridge_area.body_entered.connect(_bridge_area_entered) == OK)
+	assert(huff_manager.finished_exercise_round.connect(_finished_round) == OK)
 
 
 func _bridge_area_entered(_body) -> void:
@@ -37,25 +38,24 @@ func _on_timeline_ended() -> void:
 		wolf.set_next_target()
 
 
+func _finished_round() -> void: 
+	if current_round < 2:
+		current_round += 1 
+		huff_manager.create_round(current_round)
+		Dialogic.start(Utils.DIALOGUE_EXERCISE1_CORRECT_ANSWER)
+		
+	else: 
+		player.set_block_movement(true)
+
+
 func _on_wolf_reached() -> void: 
-	player.block_movement(false)
-	# TODO move player to optimal position 
+	# block movement and get player in optimal position to complete the exercise 
+	player.set_position_and_block(bridge_area.global_position, false)
 	wolf.npc_target_reached.disconnect(_on_wolf_reached)
+	huff_manager.create_round(current_round)
+	Dialogic.start(Utils.DIALOGUE_EXERCISE1_CORRECT_ANSWER)
 
 
 func _input(event):
-	if event.is_action_pressed(Utils.ACTION_DEBUG):
-		if huff_manager.current_huffs.size() != 0:
-			for i in huff_manager.current_huffs.size():
-				huff_manager.current_huffs[i].visible = false
-		
+	if event.is_action_pressed(Utils.ACTION_DEBUG) && current_round == 0:
 		huff_manager.create_round(current_round)
-		if current_round <= 2:
-			current_round += 1 
-
-
-func _on_huff_clicked(is_huff_correct: bool) -> void: 
-	if is_huff_correct:
-		print("is true")
-	else: 
-		print("is false")

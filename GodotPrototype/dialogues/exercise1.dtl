@@ -1,3 +1,13 @@
 join pig1 1 [animation="Zoom In Center" wait="true"]
-pig1: Olá!
+pig1: Eu já disse que ia construir a minha casa sozinho! 
+leave pig1
+join pig2 1 [animation="Bounce In"]
+pig2: Ninguém disse que- 
+pig2: Hey! Quem és tu? 
+leave pig2
+join pig3 1
+pig3: Oh não, o lobo! Eu avisei-vos!
+leave pig3
+join pig1 1
+pig1: Calma, nós já lidámos com esta situação antes. Faz como te pedirmos para conseguirmos afugentar o lobo! 
 [end_timeline]

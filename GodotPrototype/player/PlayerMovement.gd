@@ -14,13 +14,13 @@ func _ready() -> void:
 	InteractionManager.register_player(self)
 
 
-func _input(_event) -> void: 
-	pass
-	#if Input.is_action_just_pressed(Utils.ACTION_LEFT_MOUSE) && can_move:
-		#_mouse_position_to_world_position(get_viewport().get_mouse_position())
+func set_position_and_block(new_target: Vector3, block: bool) -> void:
+	navigation_agent.target_position = new_target
+	can_move = block
 
 
-func block_movement(is_blocked: bool) -> void: 
+func set_block_movement(is_blocked: bool) -> void: 
+	print("set block movement: {0} to {1}".format([can_move, is_blocked]))
 	can_move = is_blocked
 
 
@@ -36,19 +36,3 @@ func _physics_process(delta):
 		return
 	
 	move_to_point(delta)
-
-
-#func _mouse_position_to_world_position(mouse_position) -> void:
-	#var origin = camera.project_ray_origin(mouse_position)
-	#var target = origin + camera.project_ray_normal(mouse_position) * RAY_LENGHT
-	#
-	#ray_query = PhysicsRayQueryParameters3D.create(origin, target, Utils.LAYER_WORLD)
-	#ray_query.collide_with_areas = true
-	#
-	#intersection_space_ray = space.intersect_ray(ray_query)
-	#
-	#if intersection_space_ray:
-		#clicked_ground.emit(intersection_space_ray.position)
-		#navigation_agent.target_position = intersection_space_ray.position
-
-

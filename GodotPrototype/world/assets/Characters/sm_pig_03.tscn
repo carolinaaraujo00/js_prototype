@@ -1,30 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://d23gk0gn2uwok"]
+[gd_scene load_steps=7 format=3 uid="uid://cox82kupr8waf"]
 
 [ext_resource type="Texture2D" uid="uid://ch6yo1h1saeea" path="res://world/assets/Textures/T_Characters.png" id="1_j0bya"]
 [ext_resource type="PackedScene" uid="uid://b7ycs85uhmcsu" path="res://npc/navigation_agent/npc_navigation_agent.tscn" id="1_tkv1n"]
+[ext_resource type="Script" path="res://npc/test_npc/NPC_Interact.gd" id="1_wqhef"]
 [ext_resource type="PackedScene" uid="uid://0ecq0v5cn7m8" path="res://interaction/interaction_area.tscn" id="2_oh34s"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_baldy"]
-size = Vector3(1, 0.512207, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5bhck"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7x8k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwusx"]
 atlas = ExtResource("1_j0bya")
 region = Rect2(704, 32, 296, 246)
 
-[node name="SM_Pig_03" type="Node3D"]
+[node name="SM_Pig_01" type="Node3D"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_wqhef")
 
 [node name="NPC_NavigationAgent" parent="." instance=ExtResource("1_tkv1n")]
-transform = Transform3D(5.505, 0, 0, 0, 5.505, 0, 0, 0, 5.505, 0, 1.8479, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58419, 0)
 
 [node name="InteractionArea" parent="NPC_NavigationAgent" instance=ExtResource("2_oh34s")]
-transform = Transform3D(0.181653, 0, 0, 0, 0.181653, 0, 0, 0, 0.181653, 0, -0.335677, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58419, 0)
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPC_NavigationAgent/InteractionArea"]
-transform = Transform3D(5.51, 0, 0, 0, 5.51, 0, 0, 0, 5.51, 0, 0.50662, 0)
-shape = SubResource("BoxShape3D_baldy")
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.58769, 0)
+shape = SubResource("BoxShape3D_5bhck")
 
 [node name="Sprite3D" type="Sprite3D" parent="NPC_NavigationAgent"]
-transform = Transform3D(0.181653, 0, 0, 0, 0.128448, 0.128448, 0, -0.128448, 0.128448, 0, -0.335677, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, -1.60508, 3.14749)
 alpha_cut = 2
-texture = SubResource("AtlasTexture_l7x8k")
+texture = SubResource("AtlasTexture_nwusx")

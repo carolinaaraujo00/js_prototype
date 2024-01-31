@@ -34,13 +34,16 @@ func set_shape(shape: Sprite3D, color: Color) -> void:
 		dict_shapes.get(shape.name).visible = true 
 		
 		if color: 
-			current_color = Utils.DICT_COLORS.get(color)
+			current_color = Utils.DICT_COLORS.find_key(color)
 			dict_shapes.get(shape.name).modulate = color
 
 
 func set_huff_color(color: Color) -> void: 
+	current_color = Utils.DICT_COLORS.find_key(color)
+	print(current_color)
 	current_huff.modulate = color
 
 
 func _on_interact() -> void: 
+	print("clicked prop, is correct? {0}".format([is_correct]))
 	clicked_huff.emit(is_correct)
